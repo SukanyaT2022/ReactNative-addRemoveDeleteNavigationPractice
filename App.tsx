@@ -5,13 +5,18 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import type {PropsWithChildren} from 'react';
+
+import { NavigationContainer } from '@react-navigation/native';
+
 import {
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -23,108 +28,74 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Redo2Screen from './android/app/src/screenFolder/Redo2Screen';
+import Redo3Screen from './android/app/src/screenFolder/Redo3Screen';
+import RedoScreen from './android/app/src/screenFolder/RedoScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+// connect screen
+const Stack = createNativeStackNavigator();
+export const screen = {
+  redoScreen: 'RedoScreen',
+  redo2Screen: 'Redo2Screen',
+  redo3Screen: 'Redo3Screen',
+
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the reccomendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
-
+function App({navigation}: any): React.JSX.Element {
+  
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
+ //step 1 go to https://reactnavigation.org/docs/getting-started and --install npm install @react-navigation/native
+   //step 2--install dependenciies bare - npm install react-native-screens react-native-safe-area-context
+   //step 3- npx pod-install ios
+   //step 4 - go to android> src> main> mainactivity.kt> 
+   // and put  - override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(null)}
+   //and put on top of acitivity.kt --import android.os.Bundle;
+//step5- npm install @react-navigation/native-stack
+//step 6 - npm install @react-navigation/elements
+ //step7- crate stack line 37 
+ 
+ // connect screen
+
+    <NavigationContainer>
+          <Stack.Navigator initialRouteName={screen.redoScreen}>
+          {/*options={{headerShown:false}} if donot want header on the screen*/}
+          <Stack.Screen name={screen.redoScreen} component={RedoScreen} />
+            <Stack.Screen name={screen.redo2Screen} component={Redo2Screen} options={{headerShown:false}}/>
+            {/* options={{headerShown:false} this show header on the screen*/}
+            <Stack.Screen name={screen.redo3Screen} component={Redo3Screen} />
+
+          </Stack.Navigator>
+        </NavigationContainer>
+
+  
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  oneBoxStyle: {
+    backgroundColor: 'lightgreen',
+    padding: 15,
+    flexDirection: 'row',
+    gap: 6,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  wrapperStyle: {
+    flexDirection: 'row',
+    gap: 2,
+    justifyContent: 'space-between',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  changeColorAfterSelect: {
+    backgroundColor: 'orange',
   },
-  highlight: {
-    fontWeight: '700',
+  buttonStyle: {
+    padding: 20,
+    backgroundColor: 'orange',
+    width: '50%',
+    margin: 'auto',
   },
 });
 
