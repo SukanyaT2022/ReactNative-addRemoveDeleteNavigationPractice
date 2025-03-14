@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Icon  from 'react-native-vector-icons/FontAwesome';
+import { screen } from '../../../../App';
 
 const Redo2Screen = ({navigation}:any) => {
   const [carArray, setCarArray] = useState<string[]>([
@@ -16,14 +17,13 @@ const Redo2Screen = ({navigation}:any) => {
     };
     console.log(userSelect);
     return (
-   
-  
       <View style={{flex: 1}}>
-      
+   
         <Text style={{fontFamily: 'Roboto', marginTop: 100, fontSize: 50}}>
           Test google font
         </Text>
-        <Text>RedoScren 3 add delete function </Text>
+        <Text>Redo2page</Text>
+       
         <Icon name="rocket" size={30} color="#900" style={{marginTop: 100}} />
   
         {/* //map array */}
@@ -46,7 +46,7 @@ const Redo2Screen = ({navigation}:any) => {
         </View>
         {/* //end map view */}
 
-            {/* <TouchableOpacity onPress={()=>navigation.navigate('Redo2Screen')}><Text>Next redoScreen 3 add delete func btn</Text></TouchableOpacity> */}
+            <TouchableOpacity onPress={()=>navigation.navigate(screen.redo3Screen)}><Text>Next redoScreen 3 add delete func btn</Text></TouchableOpacity>
        
       </View>
     );

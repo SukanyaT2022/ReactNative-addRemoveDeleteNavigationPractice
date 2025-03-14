@@ -8,21 +8,35 @@ const Redo3Screen = ({navigation}:any) => {
        'van',
        'other',
      ]);
+//step1 of delete crate array that hold what user delete
+const [holdDeleteArray, setHoldDeleteArray] = useState<string[]>([])
+
+
+//hold whta user select
      const [userSelect, setUserSelect] = useState<string>('');
      const selectFunc = (item: string) => {
        console.log(item);
        setUserSelect(item);
      };
      console.log(userSelect);
+
+     //step 3 crate deletefunc
+     const deleteFunc=(carType:string)=>{
+setHoldDeleteArray((previousState)=>[...previousState, carType])
+// step5  delete is update and remove ehat we delete
+setCarArray((previousState)=>previousState.filter((item)=>item !== carType))
+//[...previousState] means copy all what ever is previous state
+     }
      return (
     
    // this one add remove function
        <View style={{flex: 1}}>
-        <Text>RedoScreen3 add delete func</Text>
+
          <Text style={{fontFamily: 'Roboto', marginTop: 100, fontSize: 50}}>
            Test google font
          </Text>
-         <Icon name="rocket" size={30} color="#900" style={{marginTop: 100}} />
+         <Text>Redo3Screen3 --add delete func</Text>
+
    
          {/* //map array */}
          <View style={styles.wrapperStyle}>
@@ -36,13 +50,24 @@ const Redo3Screen = ({navigation}:any) => {
                  ]}
                  onPress={() => selectFunc(item)}>
                  <Text>{item}</Text>
-                 <Icon name="rocket" size={20} color="#900" />
+         
+         {/* //stp2 click rocket to delete--pass on press and define deletefunc  */}
+         {/* step 4 delete pput call back function on deletefunc--{()=>deleteFunc(item)} */}
+         <Icon name="rocket" size={30} color="#900" style={{marginTop: 100}} onPress={()=>deleteFunc(item)} />
                </TouchableOpacity>
              );
            })}
          </View>
          {/* //end map view */}
         
+        {/* contnut next week refreshfunc */}
+        <TouchableOpacity onPress={()=>{
+setCarArray((prevState)=>{
+  const check:boolean = prevState.sum
+})
+setHoldDeleteArray([])//make holddeletearray empty
+
+        }}><Text>Refresh btn</Text></TouchableOpacity>
        </View>
      );
    }
