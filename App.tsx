@@ -9,7 +9,7 @@ import React, {useState} from 'react';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import type {PropsWithChildren} from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 
 import {
   ScrollView,
@@ -32,6 +32,7 @@ import Redo2Screen from './android/app/src/screenFolder/Redo2Screen';
 import Redo3Screen from './android/app/src/screenFolder/Redo3Screen';
 import RedoScreen from './android/app/src/screenFolder/RedoScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Redo4ScreenPractice from './android/app/src/screenFolder/Redo4ScreenPractice';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -43,7 +44,7 @@ export const screen = {
   redoScreen: 'RedoScreen',
   redo2Screen: 'Redo2Screen',
   redo3Screen: 'Redo3Screen',
-
+  redo4ScreenPractice: 'Redo4ScreenPractice',
 }
 
 function App({navigation}: any): React.JSX.Element {
@@ -68,11 +69,11 @@ function App({navigation}: any): React.JSX.Element {
             <Stack.Screen name={screen.redo2Screen} component={Redo2Screen} options={{headerShown:false}}/>
             {/* options={{headerShown:false} this show header on the screen*/}
             <Stack.Screen name={screen.redo3Screen} component={Redo3Screen} />
-
+            <Stack.Screen name={screen.redo4ScreenPractice} component={Redo4ScreenPractice
+              
+            } />
           </Stack.Navigator>
         </NavigationContainer>
-
-  
   );
 }
 

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Icon  from 'react-native-vector-icons/FontAwesome';
+import { screen } from '../../../../App';
 const Redo3Screen = ({navigation}:any) => {
  const [carArray, setCarArray] = useState<string[]>([
        'truck',
@@ -61,13 +62,15 @@ setCarArray((previousState)=>previousState.filter((item)=>item !== carType))
          {/* //end map view */}
         
         {/* contnut next week refreshfunc */}
-        <TouchableOpacity onPress={()=>{
+        {/* <TouchableOpacity onPress={()=>{
 setCarArray((prevState)=>{
   const check:boolean = prevState.sum
 })
 setHoldDeleteArray([])//make holddeletearray empty
 
-        }}><Text>Refresh btn</Text></TouchableOpacity>
+        }}><Text>Refresh btn</Text></TouchableOpacity> */}
+
+        <TouchableOpacity onPress={()=>navigation.navigate(screen.redo4ScreenPractice)}><Text>Click Next to Redo4Screen</Text></TouchableOpacity>
        </View>
      );
    }

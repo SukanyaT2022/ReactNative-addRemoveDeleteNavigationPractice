@@ -22,7 +22,7 @@ const Redo2Screen = ({navigation}:any) => {
         <Text style={{fontFamily: 'Roboto', marginTop: 100, fontSize: 50}}>
           Test google font
         </Text>
-        <Text>Redo2page</Text>
+        <Text>Redo2page-only add and update</Text>
        
         <Icon name="rocket" size={30} color="#900" style={{marginTop: 100}} />
   
