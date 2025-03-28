@@ -3,12 +3,15 @@ import React from 'react'
 interface buttonProp{
 message:string
 onPressProp:()=>void
+isSelected: boolean
+disable?: boolean
 }
-const SelectButtonComp = ({message, onPressProp}:buttonProp) => {
+const SelectButtonComp = ({message, onPressProp, isSelected, disable}:buttonProp) => {
   return (
     <TouchableOpacity 
-    style={styles.main}
-    onPress={onPressProp}
+    style={[isSelected?  styles.ChangeColorBtn : styles.main]}
+    onPress={disable ? ()=> null : onPressProp}
+
     >
       <Text>{message}</Text>
     </TouchableOpacity>
@@ -22,7 +25,10 @@ main:{
     backgroundColor: "gray",
     alignItems:'center',
     padding:10,
-
-  
+},
+ChangeColorBtn:{  
+  alignItems:'center',
+  padding:10,
+  backgroundColor:'green',
 },
 })
