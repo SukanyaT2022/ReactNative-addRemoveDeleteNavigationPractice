@@ -36,6 +36,7 @@ import Redo4ScreenPractice from './android/app/src/screenFolder/Redo4ScreenPract
 import MainButtonScreen from './android/app/src/screenFolder/MainButtonScreen';
 import MainBtnScreen3 from './android/app/src/screenFolder/MainBtnScreen3';
 import MainbtnScreen4 from './android/app/src/screenFolder/MainbtnScreen4';
+import MainBtnScreen6 from './android/app/src/screenFolder/MainBtnScreen6';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -50,7 +51,8 @@ export const screen = {
   redo4ScreenPractice: 'Redo4ScreenPractice',
   mainButtonScreen: 'MainButtonScreen',
   mainBtnScreen3: 'MainBtnScreen3',
-  mainbtnScreen4: ' MainbtnScreen4'
+  mainbtnScreen4: ' MainbtnScreen4',
+  mainBtnScreen6: 'MainBtnScreen6',
 }
 
 function App({navigation}: any): React.JSX.Element {
@@ -69,7 +71,7 @@ function App({navigation}: any): React.JSX.Element {
  // connect screen
 
     <NavigationContainer>
-          <Stack.Navigator initialRouteName={screen.mainbtnScreen4}>
+          <Stack.Navigator initialRouteName={screen.mainBtnScreen6}>
           {/*options={{headerShown:false}} if donot want header on the screen*/}
           <Stack.Screen name={screen.redoScreen} component={RedoScreen} />
             <Stack.Screen name={screen.redo2Screen} component={Redo2Screen} options={{headerShown:false}}/>
@@ -79,6 +81,7 @@ function App({navigation}: any): React.JSX.Element {
             <Stack.Screen name={screen.mainButtonScreen} component={MainButtonScreen} />
             <Stack.Screen name={screen.mainBtnScreen3} component={MainBtnScreen3} />
             <Stack.Screen name={screen.mainbtnScreen4} component={MainbtnScreen4} />
+            <Stack.Screen name={screen.mainBtnScreen6} component={MainBtnScreen6} />
           </Stack.Navigator>
         </NavigationContainer>
   );
